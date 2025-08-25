@@ -51,7 +51,20 @@ class CompositeFrame{
     }
 
     initFbo(){
-        this.pg = createGraphics(this.getRenderWidth(), this.getRenderHeight(), WEBGL);
-        this.pg.background(0);
+        this.pg = createGraphics(this.getRenderWidth(), this.getRenderHeight());
+        this.pg.background(255,255,255,0);
+        this.pg.noStroke();
+        this.pg.fill(0);
+        for(let r=0;r<this.height;r++){
+            this.pg.push();
+            for(let c=0;c<this.width;c++){
+                let idx = r*this.width+c;
+                this.CompositePixels[idx].drawFbo(this.pg);
+                this.pg.translate(this.pixelWidth, 0);
+            }
+            this.pg.pop();
+            this.pg.translate(0, this.pixelHeight);
+        }
+        
     }
 }

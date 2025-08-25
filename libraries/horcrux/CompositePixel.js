@@ -34,6 +34,22 @@ class CompositePixel{
         pop();
     }
 
+    drawFbo(pg){
+        pg.push();
+        for(let y=0;y<this.getNumRows();y++){
+            pg.push();
+            pg.translate(0, y*this.subPixelH);
+            for(let x=0;x<this.getNumCols();x++){
+                pg.push();
+                pg.translate(x*this.subPixelW,0);
+                this.SubPixels[y][x].drawFbo(pg);
+                pg.pop();
+            }
+            pg.pop();
+        }
+        pg.pop();
+    }
+
     initSubPixels(cols, rows){
         const sp = [];
         for(let r=0;r<rows;r++){

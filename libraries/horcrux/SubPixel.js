@@ -12,4 +12,11 @@ class SubPixel{
             rect(0,0, this.width, this.height);
         }
     }
+
+    drawFbo(pg){
+        if(this.value==0){
+            fill(0,0,0,255);
+            pg.rect(0,0, this.width, this.height);
+        }
+    }
 }

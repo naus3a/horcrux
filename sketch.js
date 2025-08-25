@@ -2,6 +2,7 @@ let img;
 let imgG;
 let imgB;
 let shares = [];
+let pg;
 
 function preload(){
   img = loadImage("img/naucoding.png");
@@ -18,9 +19,10 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  //background(255);
+  //shares[0].draw(0,0);
+
   shares[0].drawFbo(0,0);
-  
 }
 
 function makeBW(){
