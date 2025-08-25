@@ -19,10 +19,12 @@ function setup() {
 }
 
 function draw() {
-  //background(255);
-  //shares[0].draw(0,0);
-
+  background(255);
+  push();
+  scale(1,1);
   shares[0].drawFbo(0,0);
+  shares[1].drawFbo(map(mouseX, 0,width, 0, shares[0].getRenderWidth()+100),0);
+  pop();
 }
 
 function makeBW(){
