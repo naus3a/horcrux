@@ -1,5 +1,5 @@
 class NaorShamir{
-    constructor(img, n, k){
+    constructor(img, n, k, pixelSz){
         this.img = img;
         this.n = n; //number of shares
         this.k = k; //min n of shares to decrypt
@@ -33,16 +33,16 @@ class NaorShamir{
             ],
         ];
         this.c1 = this.initAntiPatterns();
-        this.shares = this.createShares();
+        this.shares = this.createShares(pixelSz);
     }
 
-    createShares(){
+    createShares(pixelSz){
         let frames = [];
         for(let i=0;i<2;i++){
             frames.push(new CompositeFrame(
                 this.img.width, this.img.height,
                 2,2,
-                5,5
+                pixelSz,pixelSz
             ));
         }
         this.img.loadPixels();

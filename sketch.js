@@ -6,7 +6,8 @@ let pg;
 let slider;
 
 function preload(){
-  img = loadImage("img/naucoding.png");
+  //img = loadImage("img/naucoding.png");
+  img = loadImage("img/fdt.png");
 }
 
 function setup() {
@@ -14,7 +15,8 @@ function setup() {
   let h = 800;
   createCanvas(w,h);
   makeBW();
-  let vc = new NaorShamir(imgB, 2, 2);
+  //let vc = new NaorShamir(imgB, 2, 2, 5,5);
+  let vc = new NaorShamir(imgB, 2, 2, 20,20);
   for(let i=0;i<vc.shares.length;i++) vc.shares[i].initFbo();
   shares = vc.shares;
 
@@ -29,7 +31,6 @@ function draw() {
   shares[0].drawFbo(0,0);
   shares[1].drawFbo(slider.value(),0);
   pop();
-  //console.log(slider.value);
 }
 
 function makeBW(){
