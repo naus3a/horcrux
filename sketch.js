@@ -1,7 +1,7 @@
 let img;
 let imgG;
 let imgB;
-let f;
+let shares = [];
 
 function preload(){
   img = loadImage("img/naucoding.png");
@@ -13,12 +13,14 @@ function setup() {
   createCanvas(w,h);
   makeBW();
   let vc = new NaorShamir(imgB, 2, 2);
-  f = vc.shares[0];
+  for(let i=0;i<vc.shares.length;i++) vc.shares[i].initFbo();
+  shares = vc.shares;
 }
 
 function draw() {
   background(255);
-  f.draw(0,0);
+  shares[0].drawFbo(0,0);
+  
 }
 
 function makeBW(){

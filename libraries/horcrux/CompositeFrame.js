@@ -11,7 +11,7 @@ class CompositeFrame{
     }
 
     getRenderWidth(){return this.width*this.pixelWidth;}
-    getRenderHeight(){return this.heigh*this.pixelHeight;}
+    getRenderHeight(){return this.height*this.pixelHeight;}
 
     CompositePixelAt(x,y){
         return this.CompositePixels[y*this.width+x];
@@ -38,9 +38,9 @@ class CompositeFrame{
         pop();
     }
 
-    //drawFbo(x,y){
-    //    image(this.pg, x,y);
-    //}
+    drawFbo(x,y){
+        image(this.pg, x,y);
+    }
 
     initCompositePixels(){
         let p = [];
@@ -51,7 +51,7 @@ class CompositeFrame{
     }
 
     initFbo(){
-        //this.pg = createGraphics(this.getRenderWidth(), this.getRenderHeight(), WEBGL);
-        //this.pg.background(0);
+        this.pg = createGraphics(this.getRenderWidth(), this.getRenderHeight(), WEBGL);
+        this.pg.background(0);
     }
 }
