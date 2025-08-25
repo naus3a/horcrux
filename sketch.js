@@ -3,6 +3,7 @@ let imgG;
 let imgB;
 let shares = [];
 let pg;
+let slider;
 
 function preload(){
   img = loadImage("img/naucoding.png");
@@ -16,6 +17,9 @@ function setup() {
   let vc = new NaorShamir(imgB, 2, 2);
   for(let i=0;i<vc.shares.length;i++) vc.shares[i].initFbo();
   shares = vc.shares;
+
+  slider = createSlider(0,shares[0].getRenderWidth()+100);
+  slider.position(10,10);
 }
 
 function draw() {
@@ -23,8 +27,9 @@ function draw() {
   push();
   scale(1,1);
   shares[0].drawFbo(0,0);
-  shares[1].drawFbo(map(mouseX, 0,width, 0, shares[0].getRenderWidth()+100),0);
+  shares[1].drawFbo(slider.value(),0);
   pop();
+  //console.log(slider.value);
 }
 
 function makeBW(){
