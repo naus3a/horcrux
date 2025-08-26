@@ -24,6 +24,7 @@ class SubPixel{
 
     static drawText(pg){
         pg.push();
+        pg.textStyle(BOLD);
         pg.text(random(this.alphabet),0,0);
         pg.pop();
     }

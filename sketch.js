@@ -15,15 +15,15 @@ function setup() {
   let h = 800;
   createCanvas(w,h);
   makeBW();
-  let vc = new NaorShamir(imgB, 2,2, 20, SubPixel.drawPolka);
+  let vc = new NaorShamir(imgB, 2,2, 20, SubPixel.drawText);
   for(let i=0;i<vc.shares.length;i++) vc.shares[i].initFbo();
   shares = vc.shares;
 
   slider = createSlider(0,shares[0].getRenderWidth()+100);
   slider.position(10,10);
 
-  save(shares[0].pg, "fdt_polka_share0.png");
-  save(shares[0].pg, "fdt_polka_share1.png");
+  //save(shares[0].pg, "fdt_text_share0.png");
+  //save(shares[1].pg, "fdt_text_share1.png");
 }
 
 function draw() {
