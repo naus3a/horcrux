@@ -1,10 +1,10 @@
 class CompositePixel{
-    constructor(cols, rows, width, height){
+    constructor(cols, rows, width, height, draw0){
         this.width = width;
         this.height = height;
         this.subPixelW = this.width / cols;
         this.subPixelH = this.height / rows;
-        this.SubPixels = this.initSubPixels(cols, rows);
+        this.SubPixels = this.initSubPixels(cols, rows, draw0);
     }
 
     getNumRows(){return this.SubPixels.length;}
@@ -16,22 +16,6 @@ class CompositePixel{
                 this.SubPixels[y][x].value = ptn[y*this.getNumCols()+x];
             }
         }
-    }
-
-    draw(){
-        push();
-        for(let y=0;y<this.getNumRows();y++){
-            push();
-            translate(0, y*this.subPixelH);
-            for(let x=0;x<this.getNumCols();x++){
-                push();
-                translate(x*this.subPixelW,0);
-                this.SubPixels[y][x].draw();
-                pop();
-            }
-            pop();
-        }
-        pop();
     }
 
     drawFbo(pg){
@@ -50,12 +34,12 @@ class CompositePixel{
         pg.pop();
     }
 
-    initSubPixels(cols, rows){
+    initSubPixels(cols, rows, draw0){
         const sp = [];
         for(let r=0;r<rows;r++){
             const row = [];
             for(let c=0;c<cols;c++){
-                row.push(new SubPixel(0, this.subPixelW, this.subPixelH));
+                row.push(new SubPixel(0, this.subPixelW, this.subPixelH, draw0));
             }
             sp.push(row);
         }

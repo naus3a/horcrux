@@ -6,7 +6,8 @@ let pg;
 let slider;
 
 function preload(){
-  img = loadImage("img/naucoding.png");
+  //img = loadImage("img/naucoding.png");
+  img = loadImage("img/fdt.png");
 }
 
 function setup() {
@@ -14,7 +15,7 @@ function setup() {
   let h = 800;
   createCanvas(w,h);
   makeBW();
-  let vc = new NaorShamir(imgB, 2, 2, 5,5);
+  let vc = new NaorShamir(imgB, 2,2, 20, SubPixel.drawPolka);
   for(let i=0;i<vc.shares.length;i++) vc.shares[i].initFbo();
   shares = vc.shares;
 
