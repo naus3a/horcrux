@@ -8,7 +8,7 @@ class SubPixel{
             pg.fill(0,0,0,255);
             pg.rect(0,0, this.width, this.height);
         };
-        this.alphabet = ['🌮','💩','a'];
+        this.alphabet = ["F","D","T", "#", "0"];//['🌮','💩','🤡'];
     }
 
     drawFbo(pg){
@@ -20,6 +20,12 @@ class SubPixel{
     static drawPolka(pg){
         pg.fill(0,0,0,255);
         pg.ellipse(0,0, this.width, this.height);
+    }
+
+    static drawText(pg){
+        pg.push();
+        pg.text(random(this.alphabet),0,0);
+        pg.pop();
     }
 }
 

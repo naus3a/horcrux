@@ -21,6 +21,9 @@ function setup() {
 
   slider = createSlider(0,shares[0].getRenderWidth()+100);
   slider.position(10,10);
+
+  save(shares[0].pg, "fdt_polka_share0.png");
+  save(shares[0].pg, "fdt_polka_share1.png");
 }
 
 function draw() {
