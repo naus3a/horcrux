@@ -4,6 +4,7 @@ class SubPixel{
         this.value = val;
         this.width = w?w:1;
         this.height = h?h:1;
+        this.alphabet = ['🌮','💩','a'];
     }
 
     draw(){
@@ -15,8 +16,12 @@ class SubPixel{
 
     drawFbo(pg){
         if(this.value==0){
-            fill(0,0,0,255);
+            pg.textSize(11);
+            pg.fill(0,0,0,255);
+            let r = random(0,10);
+            
             pg.rect(0,0, this.width, this.height);
+            
         }
     }
 }
